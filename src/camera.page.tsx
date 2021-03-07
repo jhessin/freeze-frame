@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { Camera } from 'expo-camera';
 
 import Toolbar from './toolbar.component';
+import Gallery from './gallery.component';
 import styles from './styles';
 
 export default class CameraPage extends React.Component {
@@ -71,6 +72,7 @@ export default class CameraPage extends React.Component {
       flashMode,
       cameraType,
       capturing,
+      captures,
     } = this.state;
 
     if (hasCameraPermission === null) {
@@ -90,6 +92,8 @@ export default class CameraPage extends React.Component {
           >
           </Camera>
         </View>
+
+        {captures.length > 0 && <Gallery captures={captures}/>}
 
         <Toolbar
           capturing={capturing}
